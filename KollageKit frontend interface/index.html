@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>kollagekit ai resume Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-file-alt"></i> kollagekit AI Resume Analyzer</h1>
+            <p class="subtitle">Upload your resume and get intelligent suggestions for improvement</p>
+        </header>
+
+        <div class="main-content">
+            <div class="upload-section">
+                <form id="uploadForm">
+                    <div class="file-upload-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <label for="fileInput"> Upload Your Resume (PDF, DOC, DOCX)</label>
+                        <input type="file" id="fileInput" name="files" accept=".pdf,.doc,.docx" multiple>
+                        <p class="file-hint">Drag and drop files here or click to browse</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jobTitle"> Target Job Title: *</label>
+                        <input type="text" id="jobTitle" name="jobTitle" placeholder="e.g., Software Engineer, Marketing Manager" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience"> Years of Experience: (Optional)</label>
+                        <select id="experience" name="experience">
+                            <option value="">Select experience level (optional)</option>
+                            <option value="entry">Entry Level (0-2 years)</option>
+                            <option value="mid">Mid Level (3-5 years)</option>
+                            <option value="senior">Senior Level (6-10 years)</option>
+                            <option value="executive">Executive Level (10+ years)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry"> Industry: (Optional)</label>
+                        <select id="industry" name="industry">
+                            <option value="">Select industry (optional)</option>
+                            <option value="technology">Technology</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="finance">Finance</option>
+                            <option value="education">Education</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="sales">Sales</option>
+                            <option value="consulting">Consulting</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="textInput"> Additional Information: (Optional)</label>
+                        <textarea id="textInput" name="text" rows="4" placeholder="Add any specific requirements, skills, or achievements you'd like to highlight..."></textarea>
+                    </div>
+
+                    <button type="submit" class="generate-btn">
+                        <i class="fas fa-magic"></i> Analyze & Generate Resume
+                    </button>
+                </form>
+            </div>
+
+            <div class="results-section">
+                <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Analyzing your resume...</p>
+                </div>
+
+                <div class="suggestions-container" id="suggestionsContainer" style="display: none;">
+                    <h2><i class="fas fa-lightbulb"></i> Resume Suggestions</h2>
+                    
+                    <div class="suggestion-category">
+                        <h3><i class="fas fa-star"></i> Key Improvements</h3>
+                        <div id="keyImprovements" class="suggestion-list"></div>
+                    </div>
+
+                    <div class="suggestion-category">
+                        <h3><i class="fas fa-tools"></i> Skills Enhancement</h3>
+                        <div id="skillsEnhancement" class="suggestion-list"></div>
+                    </div>
+
+                    <div class="suggestion-category">
+                        <h3><i class="fas fa-chart-line"></i> Experience Optimization</h3>
+                        <div id="experienceOptimization" class="suggestion-list"></div>
+                    </div>
+
+                    <div class="suggestion-category">
+                        <h3><i class="fas fa-bullseye"></i> ATS Optimization</h3>
+                        <div id="atsOptimization" class="suggestion-list"></div>
+                    </div>
+                </div>
+
+                <div class="generated-resume" id="generatedResume" style="display: none;">
+                    <h2><i class="fas fa-file-alt"></i> Generated Resume</h2>
+                    <div class="resume-actions">
+                        <button class="action-btn download-btn" onclick="downloadResume()">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                        <button class="action-btn copy-btn" onclick="copyResume()">
+                            <i class="fas fa-copy"></i> Copy Text
+                        </button>
+                    </div>
+                    <div id="resumeContent" class="resume-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
